@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -188,7 +188,7 @@ const Dashboard = () => {
               <Download className="mr-2 h-4 w-4" />
               Export
             </Button>
-            <Button variant="outline" size="sm" onClick={fetchSections}>
+            <Button variant="outline" size="sm" onClick={() => fetchSections()}>
               <RefreshCw className="mr-2 h-4 w-4" />
               Refresh
             </Button>

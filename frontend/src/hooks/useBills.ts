@@ -9,7 +9,6 @@ import type {
   BillFilters,
   TagStat,
   DailyStat,
-  UseBillsReturn,
 } from "@/types";
 
 export const useBills = (
