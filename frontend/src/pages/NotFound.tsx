@@ -5,8 +5,6 @@ import { useAuth } from '@/hooks/useAuth';
 
 import {
     Home,
-    ArrowLeft,
-    Wallet,
     CreditCard,
     DollarSign,
     TrendingUp,
@@ -51,14 +49,6 @@ const NotFound = () => {
         }));
         setFloatingMoney(newFloatingMoney);
     }, []);
-
-    const handleGoBack = () => {
-        if (isAuthenticated) {
-            navigate('/dashboard');
-        } else {
-            navigate('/');
-        }
-    };
 
     const suggestedRoutes = [
         { path: '/dashboard', label: 'Dashboard', icon: <Home className="h-4 w-4" /> },

@@ -50,7 +50,6 @@ const SectionPage = () => {
     createBill,
     updateBill,
     deleteBill,
-    refetch,
   } = useBills({
     section: id,
     limit: 50,
@@ -206,18 +205,6 @@ const SectionPage = () => {
     .sort((a, b) => b.amount - a.amount)
     .slice(0, 5);
 
-  // Utility function for generating colors (Deprecated/Unused but kept if needed elsewhere)
-
-  // Utility function for generating colors
-  function stringToColor(str: string): string {
-    if (!str) return 'hsl(0, 0%, 70%)'; // Default gray for empty/undefined
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    const hue = hash % 360;
-    return `hsl(${hue}, 70%, 60%)`;
-  }
 
   if (isLoading) {
     return (
