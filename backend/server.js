@@ -17,6 +17,12 @@ const PORT = process.env.PORT || 3000;
 // ========================
 app.use(cookieParser());
 
+// ========================
+// Body Parsing Middleware
+// ========================
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 // ========================
 // Middleware Configuration
