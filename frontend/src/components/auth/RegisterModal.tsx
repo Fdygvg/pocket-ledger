@@ -77,7 +77,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose, onSucces
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-lg max-h-[90vh] w-[95vw] overflow-y-auto p-4 sm:p-6">
         {step === 'warning' && (
           <>
             <DialogHeader>

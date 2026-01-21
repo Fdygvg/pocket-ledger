@@ -21,16 +21,36 @@ app.use(cookieParser());
 // ========================
 // Middleware Configuration
 // ========================
+
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? [
+    'https://pocketledger-gray.vercel.app',
+    'https://pocketledger.vercel.app',
+  ]
+  : [
+    'http://localhost:5173',
+    'http://localhost:6173',
+    'http://127.0.0.1:5173',
+  ];
+
+
+
 app.use(cors({
-  origin: 'http://localhost:6173',
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
+      return callback(new Error(msg), false);
+    }
+
+    return callback(null, true);
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
-  exposedHeaders: ['Set-Cookie']
+  exposedHeaders: ['Set-Cookie'],
 }));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 
 // ========================
 // Database Connection
